@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>LoginForm</title>
+<meta charset="utf-8">
+<script type="text/javascript">
+	var d={"Naruto":"Uzumaki","Sasuke":"Uchicha"};
+	var count=3;
+	function validate(){
+		var uname=document.getElementById('username').value;
+		var password=document.getElementById('password').value;
+		
+		if(uname=="" || password==""){
+			alert("Fill the fields");
+			return false;
+		}
+		else if(uname in d){
+			if(password==d[uname]){
+				return true;
+			}
+			else{
+				document.getElementById('passwordlabel').style.visibility="visible";
+				count--;
+				if(count==0){
+					alert("Sorry you have reached password limit");
+					window.location.href="password.html";
+				}
+				return false;
+			}
+			
+		}
+		else{
+			document.getElementById('usernamelabel').style.visibility="visible";
+			return false;
+		}
+	}
+</script>
+</head>
+<body bgcolor="grey" vlink="red" style="color:white" link="yellow">
+	<nav align="right">
+		<a href="#">Profile</a>&nbsp
+		<a href="#">Gallery</a>&nbsp
+		<a href="#">Resources</a>&nbsp
+		<a href="#">Notifications</a>&nbsp
+		<a href="#">Home</a>&nbsp
+	</nav>
+	<h1 align="center">Welcome to My Website</h1>
+<br><br><br>
+<form action="C:\Users\Areef\Desktop\subhani\Wtlab\Lab3\profile.html" onsubmit="return validate()">
+<table align="center">
+<legend align="center"><b>LOGIN HERE</b></legend>
+
+<tr>
+<td><label name="username">UserName:</label></td>
+<td><input type="text" name="username" placeholder="Username" id="username" ></input></td>
+<td><label id="usernamelabel" style="color: red;visibility: hidden;">Invalid</label></td></tr>
+
+<tr>
+<td><label name="password">Password:</label></td>
+<td><input type="password" name="password" id="password" ></input></td>
+<td><label id="passwordlabel" style="color: red;visibility: hidden;">Incorrect</label></td></tr>
+
+<tr>
+<td><button name="submit">Sign in</button></td>
+<td><button name="sign up" onclick="window.location.href='Registration.html'">Sign up</button></td>
+</tr>
+
+
+</table>
+
+
+<p align="center"><a href="password.html">Forgotten password</a></p><br>
+
+</body>
+</html>
